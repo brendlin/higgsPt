@@ -3,6 +3,7 @@ High-p<sub>T</sub> Higgs Project
 
 Reading Material
 ========
+ - Original paper, "Boosted Higgs Shapes": [arXiv:1405.4295](https://arxiv.org/pdf/1405.4295.pdf)
  - Grazzini et al: [arXiv:1612.00283](https://arxiv.org/abs/1612.00283)
  - Grazzini et al: [arXiv:1806.08832](https://arxiv.org/abs/1806.08832)
  - CMS differential interpretation: [arXiv:1812.06504](https://arxiv.org/abs/1812.06504)
