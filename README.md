@@ -36,3 +36,7 @@ Madgraph resources
  - MadGraph issues in Jira:
    - [AGENE-1692](https://its.cern.ch/jira/browse/AGENE-1692)
    - [AGENE-1862](https://its.cern.ch/jira/browse/AGENE-1862)
+
+SMEFT@NLO
+========
+ - [Link to FeynRules](http://feynrules.irmp.ucl.ac.be/wiki/SMEFTatNLO)
