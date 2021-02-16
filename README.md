@@ -17,6 +17,10 @@ Experimental
     - Uses SMEFTsim and SMEFT@NLO in an EFT fit approach
     - Effect of operators is parameterized, applied as a correction to the SM prediction
     - Discussion of parameterization of Higgs boson decay widths
+ - H→γγ differential interpretation @140 fb<sup>-1</sup>: [CDS](https://cds.cern.ch/record/2655119/files/ATL-COM-PHYS-2019-039.pdf)
+    - Uses SMEFTsim in an EFT fit approach
+    - Uses both SILH and Warsaw basis
+    - Uses Professor method for interpolation
  - H→γγ Couplings @36 fb<sup>–1</sup> [arXiv:1802.04146](https://arxiv.org/pdf/1802.04146.pdf)
     - Section 9.5.8: description of EFT fit
     - Uses the Professor method for interpolation
