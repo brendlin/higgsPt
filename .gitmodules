@@ -1,0 +1,3 @@
+[submodule "madgraphsetup"]
+	path = madgraphsetup
+	url = ../../dboerner/madgraphsetup
