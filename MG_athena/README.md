@@ -4,7 +4,7 @@ How to run Madgraph with Athena and SMEFT@NLO
 Setup
 ---------
 
-asetup AthGeneration,21.6.58,here
+No setup is required; asetup is done inside the source files.
 
 Running
 ---------
@@ -18,3 +18,4 @@ A few simple "warmup" scripts have been added to validate that the process is wo
 | `source run_makeGridpack_Pythia8.sh` | mc.aMCPy8EG_ppToHj_SMEFTatNLO_GridPack.py | Make gridpack (with Pythia8) |
 | `source run_generateFromGridpack_Pythia8.sh` | &nbsp;&nbsp;&nbsp;"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" | Run from gridpack generated from above |
 
+Currently the best available option is the two-step option: make a gridpack, and then generate events from it.

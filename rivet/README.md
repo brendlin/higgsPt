@@ -7,7 +7,7 @@ using Madgraph interfaced to Athena. Then proceed with the following steps.
 
 Setup
 ---------
-asetup 21.6.58,AthGeneration
+asetup 21.6.57,AthGeneration
 source setupRivet.sh # This does not look like it should work, but it does
 ln -s ../madgraphsetup/Rivet/HiggsDiphotonFiducialCrossSectionAnalysis2020.cc .
 
@@ -30,5 +30,5 @@ Converting output to a Root File
 ----------
 
 ```bash
-$AthGeneration_DIR/src/Generators/Rivet_i/share/example/convert2root myanalysis.yoda
+$AthGeneration_DIR/src/Generators/Rivet_i/share/example/convert2root Rivet.yoda
 ```

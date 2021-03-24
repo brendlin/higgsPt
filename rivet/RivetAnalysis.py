@@ -34,12 +34,12 @@ job = AlgSequence()
 from Rivet_i.Rivet_iConf import Rivet_i
 rivet = Rivet_i("Rivet")
 rivet.AnalysisPath = os.environ['PWD']
-rivet.Analyses += [ 'HiggsDiphotonDifferentialCrossSection2020' ]
+rivet.Analyses += [ 'HiggsFullPhaseSpace' ]
 rivet.RunName = 'Rivet'
 
 rivet.HistoFile = 'Rivet.yoda'
 rivet.DoRootHistos = False
-rivet.CrossSection = 1.0
+#rivet.CrossSection = 1.0
 job += rivet
 
 import AthenaCommon.AlgSequence as acas
