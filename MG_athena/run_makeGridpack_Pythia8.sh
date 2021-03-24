@@ -1,6 +1,6 @@
 #!/bin/bash
 
-asetup AthGeneration,21.6.58,here
+asetup AthGeneration,21.6.57,here
 THEDIR=run_makeGridpack
 THERUNNUMBER=999999
 THEJO=mc.aMCPy8EG_ppToHj_SMEFTatNLO_GridPack.py

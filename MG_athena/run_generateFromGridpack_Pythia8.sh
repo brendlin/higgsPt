@@ -1,6 +1,6 @@
 #!/bin/bash
 
-asetup AthGeneration,21.6.58,here
+asetup AthGeneration,21.6.57,here
 THEDIR=run_generateFromGridpack
 THERUNNUMBER=999999
 THEJO=mc.aMCPy8EG_ppToHj_SMEFTatNLO_GridPack.py
@@ -42,7 +42,7 @@ else
     echo -e ${GREEN} Running Gen_tf.py, generating gridpack ${NC};
     cd $THEDIR;
     echo -e ${GREEN} Running from directory ${PWD} ${NC};
-    Gen_tf.py --ecmEnergy=13000. --maxEvents=100 --firstEvent=1 --randomSeed=123456 --outputEVNTFile=EVNT.root --jobConfig=$THERUNNUMBER
+    Gen_tf.py --ecmEnergy=13000. --maxEvents=5000 --firstEvent=1 --randomSeed=123456 --outputEVNTFile=EVNT.root --jobConfig=$THERUNNUMBER
     cd -;
 fi;
 
