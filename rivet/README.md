@@ -1,4 +1,3 @@
-
 How to run Rivet with Athena on output EVNT.root files
 ============
 
@@ -7,9 +6,11 @@ using Madgraph interfaced to Athena. Then proceed with the following steps.
 
 Setup
 ---------
+```bash
 asetup 21.6.57,AthGeneration
 source setupRivet.sh # This does not look like it should work, but it does
 ln -s ../madgraphsetup/Rivet/HiggsDiphotonFiducialCrossSectionAnalysis2020.cc .
+```
 
 Running
 ---------
@@ -22,7 +23,7 @@ simply not show up, without throwing any warning. See below for how to convert a
 root histogram file.
 
 ```
-rivet-build RivetAnalysis.so HiggsDiphotonFiducialCrossSectionAnalysis2020.cc
+rivet-build RivetAnalysis.so HiggsFullPhaseSpace.cc
 athena RivetAnalysis.py -c 'directory="../MG_athena/run_generateFromGridpack"; filename="EVNT.root"'
 ```
 
