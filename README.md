@@ -1,6 +1,13 @@
 High-p<sub>T</sub> Higgs Project
 ========
 
+Checking out the Code
+---------
+
+```bash
+git clone --recursive ssh://git@gitlab.cern.ch:7999/brendlin/higgspt.git
+```
+
 Reading Material
 ========
 
@@ -26,13 +33,8 @@ Experimental
     - Uses the Professor method for interpolation
     - Discussion of Higgs boson decay width using the MG5_aMC@NLO partial width calculator
 
-Release Versions
---------
- - Madgraph: Currently, we are using the distribution **MG5_aMC_v2_6_5**.
- - Athena: We are using **AthGeneration,21.6.3**. This is outdated -- we need to update!
-
 Madgraph resources
-========
+--------
 
  - Twiki page for using MadGraph5_aMC@NLO on ATLAS: https://twiki.cern.ch/twiki/bin/viewauth/AtlasProtected/MadGraph5aMCatNLOForAtlas
  - A reference for the MadGraph5_aMC@NLO generator: [arXiv:1405.0301](https://arxiv.org/abs/1405.0301)
@@ -42,5 +44,18 @@ Madgraph resources
    - [AGENE-1862](https://its.cern.ch/jira/browse/AGENE-1862)
 
 SMEFT@NLO
-========
+--------
  - [Link to FeynRules](http://feynrules.irmp.ucl.ac.be/wiki/SMEFTatNLO)
+
+Running the Code
+========
+
+Event generation (and subsequent plotting of histograms) is achieved in the following steps:
+ - **Run Madgraph using the Athena interface.** This consists of three steps:
+   - Generating a "Gridpack" (the integration step of Madgraph) -- note that this can either be a separate step, or run in the same job as the next step.
+   - Using this Gridpack to generate discrete events (also with Madgraph) of LHE format
+   - Taking LHE events and showering them with Pythia8 (to create a `EVNT.root` file)
+   - For more information on this step, see `MG_athena/README.md`
+ - **Run a Rivet routine on the output `EVNT.root` file.** This applies a truth selection and outputs histograms (in YODA format).
+   - There is a simple script to convert a YODA file to a Root file.
+   - For more information on this step, see `rivet/README.md`
