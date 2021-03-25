@@ -1,6 +1,11 @@
 How to run Madgraph with Athena and SMEFT@NLO
 =============
 
+For more information on generators in Athena, see the [PmgMcSoftware twiki](https://twiki.cern.ch/twiki/bin/viewauth/AtlasProtected/PmgMcSoftware)
+(which includes important information on valid/blacklisted release versions).
+
+The twiki for Madgraph with Athena is here: [MadGraph5aMCatNLOForAtlas](https://twiki.cern.ch/twiki/bin/view/AtlasProtected/MadGraph5aMCatNLOForAtlas).
+
 Setup
 ---------
 
@@ -19,3 +24,10 @@ A few simple "warmup" scripts have been added to validate that the process is wo
 | `source run_generateFromGridpack_Pythia8.sh` | &nbsp;&nbsp;&nbsp;"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" | Run from gridpack generated from above |
 
 Currently the best available option is the two-step option: make a gridpack, and then generate events from it.
+
+Madgraph Reweighting
+-------
+
+For more information and some reweight_card generation examples, see
+[Reweight Cards in Athena](https://twiki.cern.ch/twiki/bin/viewauth/AtlasProtected/MadGraph5aMCatNLOreweight) as well as the
+[Madgraph Webpage](https://cp3.irmp.ucl.ac.be/projects/madgraph/wiki/Reweight#Contentofthereweight_card).
