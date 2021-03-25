@@ -1,3 +1,7 @@
+Rivet in Athena
+===========
+For more general information on the use of Rivet in Athena, see [Generators/Rivet_i](https://gitlab.cern.ch/atlas/athena/-/tree/21.6/Generators/Rivet_i).
+
 How to run Rivet with Athena on output EVNT.root files
 ============
 
