@@ -1,0 +1,22 @@
+## General ignores
+**/.asetup.save
+**/*.root
+**/*.so
+
+## MadGraph athena ignores
+*.tar.gz
+MG_athena/run_*/
+MG_athena/CMakeLists.txt
+#not sure if these should be ignored?
+#MG_athena/SMEFTatNLO/
+
+## Rivet ignores
+rivet/*.yoda
+rivet/eventLoopHeartBeat.txt
+#not sure if these should be ignored?
+#rivet/PoolFileCatalog.xml
+
+## MadGraph standalone ignores
+MG_standalone/LHAPDF-6.3.0/
+MG_standalone/MG5_aMC_v2_8_3_2/
+MG_standalone/build/
