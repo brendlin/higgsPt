@@ -1,0 +1,1 @@
+../madgraphsetup/Rivet/HiggsDiphotonFiducialCrossSectionAnalysis2020.cc
