@@ -14,7 +14,10 @@ MG_athena/CMakeLists.txt
 rivet/*.yoda
 rivet/eventLoopHeartBeat.txt
 #not sure if these should be ignored?
-#rivet/PoolFileCatalog.xml
+rivet/PoolFileCatalog.xml*
+
+## Plotting ignores
+plotting/*.pdf
 
 ## MadGraph standalone ignores
 MG_standalone/LHAPDF-6.3.0/
