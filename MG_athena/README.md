@@ -26,8 +26,22 @@ A few simple "warmup" scripts have been added to validate that the process is wo
 Currently the best available option is the two-step option: make a gridpack, and then generate events from it.
 
 Madgraph Reweighting
--------
+=========
 
 For more information and some reweight_card generation examples, see
 [Reweight Cards in Athena](https://twiki.cern.ch/twiki/bin/viewauth/AtlasProtected/MadGraph5aMCatNLOreweight) as well as the
 [Madgraph Webpage](https://cp3.irmp.ucl.ac.be/projects/madgraph/wiki/Reweight#Contentofthereweight_card).
+
+Setting a Single Operator
+----------
+If you want to set a *single* operator to a different value (which technically is not using the reweighting functionality), you can set the operator value
+in the `extras` argument of `build_run_card`, e.g. to set the `ctG` operator to -0.6, you can specify in the JO file:
+
+```python
+extras = { ...,
+    'DIM62F' : {'ctG':'-0.6'}
+}
+...
+build_run_card(..., extras=extras)
+```
+
