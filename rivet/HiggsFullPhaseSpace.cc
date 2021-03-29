@@ -31,19 +31,19 @@ namespace Rivet {
 
       for (HepMC::GenEvent::particle_const_iterator p = evt->particles_begin(); p != evt->particles_end(); ++p) {
 
-         int p_pdg_id = (*p)->pdg_id();
+        int p_pdg_id = (*p)->pdg_id();
 
-         if (p_pdg_id !=  PID::HIGGSBOSON) continue;
-     
-         Particle *higgs = new Particle(*p);
+        if (p_pdg_id !=  PID::HIGGSBOSON) continue;
+
+          Particle *higgs = new Particle(*p);
   
-         const double weight = event.weight();
-         // std::cout << "Filling Higgs with pt " << higgs->pT() << std::endl;
+          const double weight = event.weight();
+          // std::cout << "Filling Higgs with pt " << higgs->pT() << std::endl;
 
-         // Note that Pt is in GeV here!
-         _h_pTH->fill(higgs->pT(), weight);
+          // Note that Pt is in GeV here!
+          _h_pTH->fill(higgs->pT(), weight);
 
-       }
+      }
     }
 
 
