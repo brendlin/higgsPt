@@ -1,0 +1,42 @@
+#!/bin/bash
+echo starting batch job initialization
+EL_JOBID=$(printf "%02d" $1)
+RANDOMSEED=$(($1 + 1))
+NEVENTS=1000
+SKIPEVENTS=$(($1 * $NEVENTS))
+FIRSTEVENT=$(($SKIPEVENTS + 1))
+
+# The job-option python file
+THEJO=$2
+
+TMP=${THEJO/mc\./mc_13TeV\.}
+THEGRIDPACK=${TMP/\.py/\.GRID\.tar\.gz}
+THEGRIDPACKDIR=${THEDIR/generateFrom/make}
+
+THETARBALL=$3
+
+# Set up ATLAS           
+export ATLAS_LOCAL_ROOT_BASE=/cvmfs/atlas.cern.ch/repo/ATLASLocalRootBase
+alias 'setupATLAS=source ${ATLAS_LOCAL_ROOT_BASE}/user/atlasLocalSetup.sh'
+source ${ATLAS_LOCAL_ROOT_BASE}/user/atlasLocalSetup.sh    
+
+export THEDIR=job$EL_JOBID
+mkdir -p $THEDIR && cd $THEDIR
+
+asetup AthGeneration,21.6.57,here
+
+ln -s ../../$THETARBALL .
+ln -s ../../$THEJO .
+
+echo `pwd`
+echo RANDOMSEED: $RANDOMSEED
+echo NEVENTS : $NEVENTS
+echo SKIPEVENTS: $SKIPEVENTS
+echo FIRSTEVENT: $FIRSTEVENT
+echo THEJO: $THEJO
+
+Generate_tf.py --ecmEnergy=13000 --firstEvent=$FIRSTEVENT --jobConfig=$THEJO\
+ --outputEVNTFile=EVNT.root --randomSeed=$RANDOMSEED --runNumber=999999\
+ --maxEvents=$NEVENTS --inputGenConfFile=$THETARBALL
+
+echo done.

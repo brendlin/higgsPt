@@ -1,0 +1,17 @@
+executable              = gridrun
+universe                = vanilla
+log                     = condor.log
+output                  = condor-$(Process).out
+error                   = condor-$(Process).err
+initialdir              = $ENV(PWD)
+arguments = $(Process) mc.Sh_228_ysyLO_ee.py mc_13TeV.Sh_228_ysyLO_ee.GRID.tar.gz
+
+# 86400 = 24 hours
+# 36000 = 10 hours
+#+RequestRuntime     = 36000
+Request_Cpus = 1
+
+Requirements = ( OpSysAndVer == "CentOS7" )
+
+getEnv = True
+queue 5000 
