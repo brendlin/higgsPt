@@ -1,6 +1,6 @@
 #!/bin/bash
 echo starting batch job initialization
-EL_JOBID=$(printf "%02d" $1)
+EL_JOBID=$(printf "%06d" $1)
 RANDOMSEED=$(($1 + 1))
 NEVENTS=1000
 SKIPEVENTS=$(($1 * $NEVENTS))
