@@ -7,8 +7,7 @@
 *.tar.gz
 MG_athena/run_*/
 MG_athena/CMakeLists.txt
-#not sure if these should be ignored?
-#MG_athena/SMEFTatNLO/
+MG_athena/SMEFTatNLO/
 
 ## Rivet ignores
 rivet/*.yoda
