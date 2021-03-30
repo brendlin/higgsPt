@@ -23,3 +23,6 @@ plotting/*.pdf
 MG_standalone/LHAPDF-6.3.0/
 MG_standalone/MG5_aMC_v2_8_3_2/
 MG_standalone/build/
+
+## Other ignores
+.vscode/
