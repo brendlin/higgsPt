@@ -4,7 +4,7 @@ log                     = condor.log
 output                  = condor-$(Process).out
 error                   = condor-$(Process).err
 initialdir              = $ENV(PWD)
-arguments = $(Process) mc.Sh_228_ysyLO_ee.py mc_13TeV.Sh_228_ysyLO_ee.GRID.tar.gz
+arguments = $(Process) $(THEJO) $(THEDIR)
 
 # 86400 = 24 hours
 # 36000 = 10 hours
@@ -14,4 +14,4 @@ Request_Cpus = 1
 Requirements = ( OpSysAndVer == "CentOS7" )
 
 getEnv = True
-queue 5000 
+queue 10
