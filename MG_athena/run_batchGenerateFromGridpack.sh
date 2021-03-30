@@ -21,7 +21,7 @@ else
     mkdir -p $THEDIR
     cp submit $THEDIR/.
 
-    cp gridrun $THEDIR/.
+    cp batchrun $THEDIR/.
     cp submit $THEDIR/.
 
     cd $THEDIR

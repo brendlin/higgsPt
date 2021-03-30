@@ -1,4 +1,4 @@
-executable              = gridrun
+executable              = batchrun
 universe                = vanilla
 log                     = condor.log
 output                  = condor-$(Process).out
