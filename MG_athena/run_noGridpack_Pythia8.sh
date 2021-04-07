@@ -1,9 +1,9 @@
 #!/bin/bash
 
 asetup AthGeneration,21.6.58,here
-THEDIR=noGridpack_Pythia8
+THEDIR=$2 # Old directory was: noGridpack_Pythia8
 THERUNNUMBER=999998
-THEJO=mc.aMCPy8EG_ppToHj_SMEFTatNLO_Nominal.py
+THEJO=$1 # Example is: mc.aMCPy8EG_ppToHj_SMEFTatNLO_Nominal.py
 
 GREEN='\033[0;32m'
 NC='\033[0m' # No Color

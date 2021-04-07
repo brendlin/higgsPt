@@ -1,8 +1,9 @@
 #!/bin/bash
 
 asetup AthGeneration,21.6.58,here
-THEDIR=noGridpack_noShowering
+THEDIR=$2 # Old directory was: noGridpack_noShowering
 THERUNNUMBER=999999
+THEJO=$1 # Example is: mc.aMC_ppToHj_SMEFTatNLO_Nominal.py
 
 GREEN='\033[0;32m'
 NC='\033[0m' # No Color
@@ -24,7 +25,7 @@ ln -s ../SMEFTatNLO .
 cd -;
 
 cd $THEDIR/$THERUNNUMBER;
-ln -s ../../mc.aMC_ppToHj_SMEFTatNLO_Nominal.py .
+ln -s ../../$THEJO .
 cd -;
 
 # Test, SMEFT@NLO, no gridpack, on-the-fly

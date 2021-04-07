@@ -1,9 +1,9 @@
 #!/bin/bash
 
 # asetup AthGeneration,21.6.57,here
-THEDIR=run_batchFromGridpack
+THEDIR=$2 # Old directory was: run_batchFromGridpack
 THERUNNUMBER=999999
-THEJO=mc.aMCPy8EG_ppToHj_SMEFTatNLO_GridPack.py
+THEJO=$1 # Example is: mc.aMCPy8EG_ppToHj_SMEFTatNLO_GridPack.py
 
 TMP=${THEJO/mc\./mc_13TeV\.}
 THEGRIDPACK=${TMP/\.py/\.GRID\.tar\.gz}
