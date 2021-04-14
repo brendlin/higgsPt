@@ -32,6 +32,9 @@ Experimental
     - Section 9.5.8: description of EFT fit
     - Uses the Professor method for interpolation
     - Discussion of Higgs boson decay width using the MG5_aMC@NLO partial width calculator
+ - High-pt H→bb Moriond 2021 analysis:
+    - Includes some description of MoReHqT, though incomplete
+    - See the supporting note: [ATL-COM-PHYS-2019-1425](https://cds.cern.ch/record/2703097/files/ATL-COM-PHYS-2019-1425.pdf)
 
 Madgraph resources
 --------
