@@ -2,6 +2,7 @@
 # This file should serve as both the JO for *making* the Gridpack and subsequently *running*
 
 from MadGraphControl.MadGraphUtils import *
+import subprocess
 
 # PDF base fragment
 # Do we need NNPDF30NLO or NNPDF30NLOnf4 ?
@@ -26,10 +27,34 @@ else :
 
 #Fetch default NLO run_card.dat and set parameters
 settings = {
-    'nevents':int(nevents)
+    'nevents':int(nevents),
+    # 'reweight':'ON'
 #    'store_rwgt_info':True
 }
 modify_run_card(process_dir=process_dir,runArgs=runArgs,settings=settings)
+
+# Add reweight card
+rcard = open('reweight_card.dat','w')
+
+reweightCommand = \
+"""
+launch --rwgt_name=ctG_m1p0_ctp_m1p0
+    set DIM62F ctG -1.0
+    set DIM62F ctp -1.0
+launch --rwgt_name=ctG_m1p0_ctp_0p0
+    set DIM62F ctG -1.0
+    set DIM62F ctp 0.0
+launch --rwgt_name=ctG_0p0_ctp_m1p0
+    set DIM62F ctG 0.0
+    set DIM62F ctp -1.0
+launch --rwgt_name=ctG_0p0_ctp_0p0
+    set DIM62F ctG 0.0
+    set DIM62F ctp 0.0
+"""
+
+rcard.write(reweightCommand)
+rcard.close()
+subprocess.call('cp reweight_card.dat ' + process_dir+'/Cards/', shell=True)
 
 generate(process_dir=process_dir,runArgs=runArgs,grid_pack=gridpack_mode)
 arrange_output(process_dir=process_dir,runArgs=runArgs,lhe_version=3,saveProcDir=True)  
