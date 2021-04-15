@@ -20,7 +20,6 @@ THEGRIDPACKDIR=${THEDIR/batchFrom/make}
 export ATLAS_LOCAL_ROOT_BASE=/cvmfs/atlas.cern.ch/repo/ATLASLocalRootBase
 alias 'setupATLAS=source ${ATLAS_LOCAL_ROOT_BASE}/user/atlasLocalSetup.sh'
 source ${ATLAS_LOCAL_ROOT_BASE}/user/atlasLocalSetup.sh    
-asetup AthGeneration,21.6.57,64,here
 
 # Test to make sure that the gridpack exists!
 echo  -e ${GREEN} Checking for Gridpack ../$THEGRIDPACKDIR/$THEGRIDPACK ${NC};
@@ -36,8 +35,11 @@ else
     ln -s ../../../$THEGRIDPACKDIR/$THEGRIDPACK .
     cd -;
 
-    echo -e ${GREEN} Running Gen_tf.py, generating gridpack ${NC};
+    echo -e ${GREEN} Running Gen_tf.py, using existing gridpack. ${NC};
     cd $THEJOBDIR;
+
+    asetup AthGeneration,21.6.57,64,here
+
     echo -e ${GREEN} Running from directory ${PWD} ${NC};
     echo RANDOMSEED: $RANDOMSEED
     echo NEVENTS : $NEVENTS

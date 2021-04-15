@@ -1,0 +1,48 @@
+#!/bin/bash
+echo starting batch job initialization
+
+EL_JOBID=$(printf "%06d" $1)
+RANDOMSEED=$(($1 + 1))
+NEVENTS=1000
+SKIPEVENTS=$(($1 * $NEVENTS))
+FIRSTEVENT=$(($SKIPEVENTS + 1))
+THERUNNUMBER=999999
+
+# The job-option python file, and the working directory
+THEJO=$2
+THEDIR=$3
+
+# Set up ATLAS, athena
+export ATLAS_LOCAL_ROOT_BASE=/cvmfs/atlas.cern.ch/repo/ATLASLocalRootBase
+alias 'setupATLAS=source ${ATLAS_LOCAL_ROOT_BASE}/user/atlasLocalSetup.sh'
+source ${ATLAS_LOCAL_ROOT_BASE}/user/atlasLocalSetup.sh    
+
+export THEJOBDIR=job$EL_JOBID
+mkdir -p $THEJOBDIR/$THERUNNUMBER
+
+cd $THEJOBDIR/$THERUNNUMBER;
+ln -s ../../../$THEJO .
+cd -;
+
+echo -e ${GREEN} Running Gen_tf.py. ${NC};
+cd $THEJOBDIR;
+echo -e ${GREEN} Running from directory ${PWD} ${NC};
+
+asetup AthGeneration,21.6.57,64,here
+
+echo RANDOMSEED: $RANDOMSEED
+echo NEVENTS : $NEVENTS
+echo SKIPEVENTS: $SKIPEVENTS
+echo FIRSTEVENT: $FIRSTEVENT
+echo THERUNNUMBER: $THERUNNUMBER
+echo THEJO: $THEJO
+echo PYTHON: $(which python)
+echo ROOT: $(which root)
+env
+
+Gen_tf.py --ecmEnergy=13000 --firstEvent=$FIRSTEVENT --jobConfig=$THERUNNUMBER\
+  --outputEVNTFile=EVNT.root --randomSeed=$RANDOMSEED --maxEvents=$NEVENTS
+
+echo done.
+echo -e ${GREEN} Finished. ${NC};
+

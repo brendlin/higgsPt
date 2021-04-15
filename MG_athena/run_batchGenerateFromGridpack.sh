@@ -19,14 +19,13 @@ if [ ! -f $THEGRIDPACKDIR/$THEGRIDPACK ]; then
 else
     # Make the directory, copy submit and run files there.
     mkdir -p $THEDIR
-    cp submit $THEDIR/.
 
     cp batchrun $THEDIR/.
     cp submit $THEDIR/.
 
     cd $THEDIR
-    echo condor_submit submit THEDIR=$THEDIR THEJO=$THEJO
-    condor_submit submit THEDIR=$THEDIR THEJO=$THEJO 
+    echo condor_submit submit THEDIR=$THEDIR THEJO=$THEJO EXECUTABLE=batchrun
+    condor_submit submit THEDIR=$THEDIR THEJO=$THEJO EXECUTABLE=batchrun
     cd -
     echo -e ${GREEN} Submitted. ${NC};
 fi;

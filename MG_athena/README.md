@@ -24,7 +24,19 @@ They should by run e.g. using the command/arguments `source run_X.py MyJO.py out
 | `source run_makeGridpack_Pythia8.sh JO.py outDir` | mc.aMCPy8EG_ppToHj_SMEFTatNLO_GridPack.py | Make gridpack (with Pythia8) |
 | `source run_generateFromGridpack_Pythia8.sh JO.py outDir` | &nbsp;&nbsp;&nbsp;"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" | Run from gridpack generated from above |
 
-Currently the best available option is the two-step option: make a gridpack, and then generate events from it.
+Note that **the gridpack mode still crashes when used in conjunction with madgraph reweighting** (typically JobOptions with _RW in the name).
+
+Batch Running
+---------
+
+You can run on the NAF batch in two ways: either running the full job on the batch system, or by generating (locally) a gridpack first and
+then running on the batch system while pointing to that gridpack. **Note that the gridpack mode still crashes when used in conjunction with madgraph reweighting**, so the full-job running
+is currently the only option there.
+
+| Script | Example working JO (Argument 1) | Description |
+| ------ | ---------------- | ----------- |
+| `source run_batchNoGridpack.sh JO.py outDir` | mc.aMCPy8EG_ppToHj_SMEFTatNLO_Nominal.py | Run without generating an intermediate gridpack |
+| `source run_batchGenerateFromGridpack.sh JO.py outDir` | mc.aMCPy8EG_ppToHj_SMEFTatNLO_GridPack.py | Run from gridpack generated from a (local) run. **Not yet working with reweighting** |
 
 Madgraph Reweighting
 =========
@@ -33,7 +45,35 @@ For more information and some reweight_card generation examples, see
 [Reweight Cards in Athena](https://twiki.cern.ch/twiki/bin/viewauth/AtlasProtected/MadGraph5aMCatNLOreweight) as well as the
 [Madgraph Webpage](https://cp3.irmp.ucl.ac.be/projects/madgraph/wiki/Reweight#Contentofthereweight_card).
 
-Setting a Single Operator
+Using Built-in Madgraph Reweighting cards
+----------
+
+To use the Madgraph built-in reweight functionality to generate different operator weights, you can add the following type of text to the JO.py file (AFTER the `modify_run_card` call but BEFORE the `generate` call):
+
+```
+# Add reweight card
+rcard = open('reweight_card.dat','w')
+
+reweightCommand = \
+"""
+launch --rwgt_name=ctG_m1p0_ctp_m1p0
+    set DIM62F ctG -1.0
+    set DIM62F ctp -1.0
+launch --rwgt_name=ctG_m1p0_ctp_0p0
+    set DIM62F ctG -1.0
+    set DIM62F ctp 0.0
+"""
+
+rcard.write(reweightCommand)
+rcard.close()
+subprocess.call('cp reweight_card.dat ' + process_dir+'/Cards/', shell=True)
+```
+
+Note that this **currently does not work with the two-step gridpack generation process**.
+
+**To automatically generate the code for a complex scan, you can modify `ParameterScanExample.py` to generate the scan points that you want.**
+
+Setting a Single Operator ("Roger's Method")
 ----------
 If you want to set a *single* operator to a different value (which technically is not using the reweighting functionality), you can set the operator value
 in the `extras` argument of `build_run_card`, e.g. to set the `ctG` operator to -0.6, you can specify in the JO file:

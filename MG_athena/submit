@@ -1,4 +1,4 @@
-executable              = batchrun
+executable              = $(EXECUTABLE)
 universe                = vanilla
 log                     = condor.log
 output                  = condor-$(Process).out
