@@ -17,7 +17,7 @@ gridpack_mode=True
 # Otherwise, we will grab the existing gridpack from the gridpack location.
 if not is_gen_from_gridpack():
     process="""
-    import model SMEFTatNLO-NLO
+    import model ./SMEFTatNLO-NLO
     generate p p > H j QED=1 QCD=3 NP=2 [QCD]
     output -f"""
 
