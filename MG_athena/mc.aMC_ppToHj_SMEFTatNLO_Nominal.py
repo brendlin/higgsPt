@@ -6,7 +6,7 @@ from MadGraphControl.MadGraph_NNPDF30NLO_Base_Fragment import *
 nevents = runArgs.maxEvents*1.1 if runArgs.maxEvents>0 else 1.1*evgenConfig.nEventsPerJob
 
 process="""
-import model SMEFTatNLO-NLO
+import model ./SMEFTatNLO-NLO
 generate p p > H j QED=1 QCD=3 NP=2 [QCD]
 output -f"""
 
