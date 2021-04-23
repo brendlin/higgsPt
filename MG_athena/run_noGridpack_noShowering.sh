@@ -1,6 +1,5 @@
 #!/bin/bash
 
-asetup AthGeneration,21.6.58,here
 THEDIR=$2 # Old directory was: noGridpack_noShowering
 THERUNNUMBER=999999
 THEJO=$1 # Example is: mc.aMC_ppToHj_SMEFTatNLO_Nominal.py
@@ -31,6 +30,9 @@ cd -;
 # Test, SMEFT@NLO, no gridpack, on-the-fly
 echo -e ${GREEN} Running Gen_tf.py, no gridpack, no showering ${NC};
 cd $THEDIR;
+asetup AthGeneration,21.6.57,here
+echo -e ${GREEN} Adding $(pwd) to PYTHONPATH.${NC};
+export PYTHONPATH=`pwd`:$PYTHONPATH
 echo -e ${GREEN} Running from directory ${PWD} ${NC};
 Gen_tf.py --ecmEnergy=13000. --maxEvents=100 --firstEvent=1 --randomSeed=123456 --outputTXTFile=test_lhe_events --jobConfig=$THERUNNUMBER
 cd -;
