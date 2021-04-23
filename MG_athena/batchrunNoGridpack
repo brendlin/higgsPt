@@ -20,6 +20,10 @@ source ${ATLAS_LOCAL_ROOT_BASE}/user/atlasLocalSetup.sh
 export THEJOBDIR=job$EL_JOBID
 mkdir -p $THEJOBDIR/$THERUNNUMBER
 
+cd $THEJOBDIR;
+ln -s ../../SMEFTatNLO .
+cd -;
+
 cd $THEJOBDIR/$THERUNNUMBER;
 ln -s ../../../$THEJO .
 cd -;

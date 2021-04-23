@@ -1,6 +1,5 @@
 #!/bin/bash
 
-asetup AthGeneration,21.6.57,here
 THEDIR=$2 # old directory was run_generateFromGridpack
 THERUNNUMBER=999999
 THEJO=$1 # Example is mc.aMCPy8EG_ppToHj_SMEFTatNLO_GridPack.py
@@ -41,6 +40,9 @@ else
     # Test, SMEFT@NLO, no gridpack, on-the-fly
     echo -e ${GREEN} Running Gen_tf.py, generating gridpack ${NC};
     cd $THEDIR;
+    asetup AthGeneration,21.6.57,here
+    echo -e ${GREEN} Adding $(pwd) to PYTHONPATH.${NC};
+    export PYTHONPATH=`pwd`:$PYTHONPATH
     echo -e ${GREEN} Running from directory ${PWD} ${NC};
     Gen_tf.py --ecmEnergy=13000. --maxEvents=5000 --firstEvent=1 --randomSeed=123456 --outputEVNTFile=EVNT.root --jobConfig=$THERUNNUMBER
     cd -;
