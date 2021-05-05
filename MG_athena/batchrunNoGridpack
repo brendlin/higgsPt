@@ -33,6 +33,7 @@ cd $THEJOBDIR;
 echo -e ${GREEN} Running from directory ${PWD} ${NC};
 
 asetup AthGeneration,21.6.57,64,here
+export PYTHONPATH=`pwd`:$PYTHONPATH
 
 echo RANDOMSEED: $RANDOMSEED
 echo NEVENTS : $NEVENTS
