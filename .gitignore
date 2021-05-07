@@ -2,6 +2,7 @@
 **/.asetup.save
 **/*.root
 **/*.so
+*~
 
 ## MadGraph athena ignores
 *.tar.gz
@@ -17,6 +18,7 @@ rivet/PoolFileCatalog.xml*
 
 ## Plotting ignores
 plotting/*.pdf
+plots/
 
 ## MadGraph standalone ignores
 MG_standalone/LHAPDF-6.3.0/
