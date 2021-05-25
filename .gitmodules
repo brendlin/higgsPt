@@ -1,3 +1,6 @@
 [submodule "madgraphsetup"]
 	path = madgraphsetup
 	url = ../../dboerner/madgraphsetup
+[submodule "plotting/genericUtils"]
+	path = plotting/genericUtils
+	url = https://:@gitlab.cern.ch:8443/brendlin/genericUtils.git
