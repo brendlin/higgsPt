@@ -69,6 +69,8 @@ rcard.close()
 subprocess.call('cp reweight_card.dat ' + process_dir+'/Cards/', shell=True)
 ```
 
+For this to work, of course all parameters which are to be reweighted must not be 0 during the original generation. Also, MadGraph fixes parameters and does not allow them to be reweighted if they are set to either 0 or 1 in the restriction card. To circumvent this, either set the parameters to an arbitrary value in the restriction card, or set them to 9.999999e-01 - the latter will be treated by MadGraph as a mutable value of 1.
+
 Note that this **currently does not work with the two-step gridpack generation process**.
 
 **To automatically generate the code for a complex scan, you can modify `ParameterScanExample.py` to generate the scan points that you want.**
