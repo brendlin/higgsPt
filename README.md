@@ -11,6 +11,10 @@ git clone --recursive ssh://git@gitlab.cern.ch:7999/brendlin/higgspt.git
 Reading Material
 ========
 
+Our ATLAS Talks
+---------
+ - Nils' talk at HComb, July 21, 2021, "Interpretation of high-pTH regime": https://indico.cern.ch/event/1044657/
+
 Theory
 ---------
  - Original paper, "Boosted Higgs Shapes": [arXiv:1405.4295](https://arxiv.org/pdf/1405.4295.pdf)
