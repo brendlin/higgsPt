@@ -40,6 +40,13 @@ Experimental
     - Includes some description of MoReHqT, though incomplete
     - See the supporting note: [ATL-COM-PHYS-2019-1425](https://cds.cern.ch/record/2703097/files/ATL-COM-PHYS-2019-1425.pdf)
 
+Professor
+--------
+ - Code is available here: https://professor.hepforge.org/
+ - See previous section for examples of ATLAS results that use Professor
+ - Link to paper: [arXiv:0907.2973](https://arxiv.org/abs/0907.2973)
+
+
 Madgraph resources
 --------
 
