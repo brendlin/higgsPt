@@ -38,7 +38,7 @@ else
     echo -e ${GREEN} Running Gen_tf.py, using existing gridpack. ${NC};
     cd $THEJOBDIR;
 
-    asetup AthGeneration,21.6.57,64,here
+    asetup AthGeneration,21.6.73,64,here
     export PYTHONPATH=`pwd`:$PYTHONPATH
 
     echo -e ${GREEN} Running from directory ${PWD} ${NC};
@@ -60,4 +60,3 @@ else
 fi;
 
 echo -e ${GREEN} Finished. ${NC};
-

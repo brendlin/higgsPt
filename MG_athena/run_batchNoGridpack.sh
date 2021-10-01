@@ -6,7 +6,7 @@
 # (Check the file "batchrunNoGridpack" for the nevents per job (typically 500)
 #
 
-# asetup AthGeneration,21.6.57,here
+# asetup AthGeneration,21.6.73,here
 THEJO=$1 # Example is: mc.aMCPy8EG_ppToHj_SMEFTatNLO_GridPack.py
 THEDIR=$2 # Old directory was: run_batchFromGridpack
 NJOBS=$3 # Check batchrunNoGridpack for the number of events per job (typically 500)

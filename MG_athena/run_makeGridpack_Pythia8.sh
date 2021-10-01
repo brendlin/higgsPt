@@ -30,7 +30,7 @@ cd -;
 # Test, SMEFT@NLO, no gridpack, on-the-fly
 echo -e ${GREEN} Running Gen_tf.py, generating gridpack ${NC};
 cd $THEDIR;
-asetup AthGeneration,21.6.57,here
+asetup AthGeneration,21.6.73,here
 echo -e ${GREEN} Adding $(pwd) to PYTHONPATH.${NC};
 export PYTHONPATH=`pwd`:$PYTHONPATH
 echo -e ${GREEN} Running from directory ${PWD} ${NC};
