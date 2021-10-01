@@ -3,8 +3,20 @@ universe                = vanilla
 log                     = condor.log
 output                  = condor-$(Process).out
 error                   = condor-$(Process).err
-initialdir              = $ENV(PWD)
+Extension               = $INT(Process,%03d)
+initialdir              = job$(Extension)
+# initialdir              = $ENV(PWD)
 arguments = $(Process) $(THEJO) $(THEDIR)
+
+#
+# This block allows you to only transfer certain files from the worker node back to your
+# personal disk space, and the remaining files are deleted. This is very useful in the case where
+# the job contains many "incidental" files that are not needed for the final result, but which can
+# cause quota limits to be exceeded.
+#
+should_transfer_files = YES
+when_to_transfer_output = ON_EXIT
+transfer_output_files = log.generate,Rivet.root
 
 # 86400 = 24 hours
 # 36000 = 10 hours
@@ -14,4 +26,4 @@ Request_Cpus = 1
 Requirements = ( OpSysAndVer == "CentOS7" )
 
 getEnv = True
-queue 10
+queue $(NJOBS)

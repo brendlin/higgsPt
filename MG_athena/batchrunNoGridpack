@@ -3,13 +3,14 @@ echo starting batch job initialization
 
 EL_JOBID=$(printf "%06d" $1)
 RANDOMSEED=$(($1 + 1))
-NEVENTS=1000
+NEVENTS=500
 SKIPEVENTS=$(($1 * $NEVENTS))
 FIRSTEVENT=$(($SKIPEVENTS + 1))
 THERUNNUMBER=999999
 
-# The job-option python file, and the working directory
+# The job-option python file
 THEJO=$2
+# The directory from which the job was launched (from which files will be copied)
 THEDIR=$3
 
 # Set up ATLAS, athena
@@ -18,19 +19,22 @@ alias 'setupATLAS=source ${ATLAS_LOCAL_ROOT_BASE}/user/atlasLocalSetup.sh'
 source ${ATLAS_LOCAL_ROOT_BASE}/user/atlasLocalSetup.sh    
 
 export THEJOBDIR=job$EL_JOBID
-mkdir -p $THEJOBDIR/$THERUNNUMBER
+mkdir -p $THERUNNUMBER
 
-cd $THEJOBDIR;
-ln -s ../../SMEFTatNLO .
-cd -;
+# Link the SMEFTatNLO directory to the working directory on the node.
+ln -s $THEDIR/../SMEFTatNLO .
 
-cd $THEJOBDIR/$THERUNNUMBER;
-ln -s ../../../$THEJO .
+# Link the job-option file to the working directory on the node, in the directory $THERUNNUMBER
+cd $THERUNNUMBER;
+ln -s $THEDIR/../$THEJO .
 cd -;
 
 echo -e ${GREEN} Running Gen_tf.py. ${NC};
-cd $THEJOBDIR;
 echo -e ${GREEN} Running from directory ${PWD} ${NC};
+echo -e ${GREEN} contents of directory below ${NC};
+ls;
+echo -e ${GREEN} contents of directory $THERUNNUMBER below ${NC};
+ls $THERUNNUMBER;
 
 asetup AthGeneration,21.6.57,64,here
 export PYTHONPATH=`pwd`:$PYTHONPATH
@@ -43,11 +47,22 @@ echo THERUNNUMBER: $THERUNNUMBER
 echo THEJO: $THEJO
 echo PYTHON: $(which python)
 echo ROOT: $(which root)
-env
+# env
 
 Gen_tf.py --ecmEnergy=13000 --firstEvent=$FIRSTEVENT --jobConfig=$THERUNNUMBER\
   --outputEVNTFile=EVNT.root --randomSeed=$RANDOMSEED --maxEvents=$NEVENTS
 
+# Now run the Rivet routine
+echo 'The directory right now (for the rivet routine) is'
+echo `pwd`
+source setupRivet.sh
+
+ln -s $THEDIR/../../rivet/RivetAnalysis.so .
+ln -s $THEDIR/../../rivet/RivetAnalysis.py .
+# ln -s $THEDIR/../../rivet/HiggsDiphotonFiducialCrossSectionAnalysis2020.cc .
+ln -s $THEDIR/../../rivet/HiggsFullPhaseSpace.cc .
+athena RivetAnalysis.py -c 'directory="."; filename="EVNT.root"'
+$AthGeneration_DIR/src/Generators/Rivet_i/share/example/convert2root Rivet.yoda
+
 echo done.
 echo -e ${GREEN} Finished. ${NC};
-
